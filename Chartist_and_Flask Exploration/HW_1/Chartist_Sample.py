@@ -37,14 +37,16 @@ def get_time_series_data():
     wanted_months = reduce(
         lambda a, b: a | b, (app.df["month"].str.contains(year) for year in all_years)
     )
-
+    print("LS COL:", ls_col)
     # Create a new dataframe from the one that
     df_new = app.df[wanted_months][["month"] + ls_col]
+
+    print("NEW DF with + ", df_new.to_json())
 
     # Convert all string dates into datetime objects and then sort them
     df_new["month"] = pd.to_datetime(df_new["month"])
     df_new = df_new.sort_values(by=["month"])
-
+    print("NEW DF = ", df_new.to_json())
     # Return the dataframe as json
     return df_new.to_json(), 200
 
