@@ -9,9 +9,9 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 # Attach our dataframe to our app
-app.df = pd.read_csv("all_stocks_5yr.csv", skiprows=1)
-# app.df.columns = ["date", "close", "Name"]
-
+DF_PATH = '/Users/samuelfolledo/Library/Mobile Documents/com~apple~CloudDocs/Desktop/MakeSchool/Term3-2/DS2.3 - Data Science in Production/HW 1 - Chartist and Flask/all_stocks_5yr.csv'
+app.df = pd.read_csv(DF_PATH, skiprows=1)
+app.df.columns = ["date", "open", "high", "low", "close", "volume", "Name"]
 
 @app.route("/", methods=["GET"])
 def get_root():
@@ -21,6 +21,20 @@ def get_root():
     return render_template("index.html"), 200
 
 
+def format_df_for_chartist(df, stock_name):
+    """
+        Format df with columns of date, close, and by
+        1. Getting (locating) df's rows with column "Name" == stock_name
+        2. Renaming "close" column with stock_name
+        3. Dropping Name column
+    """
+    filtered_df = df.loc[df['Name'] == stock_name] #1
+    filtered_df = filtered_df.rename(columns={'close': stock_name}) #2
+    filtered_df.drop(['Name'], axis=1, inplace=True) #3
+    return filtered_df
+
+
+
 @app.route("/time_series", methods=["GET"])
 def get_time_series_data():
     """
@@ -28,38 +42,50 @@ def get_time_series_data():
     """
     # Grab the requested years and columns from the query arguments
     ls_year = [int(year) for year in request.args.getlist("n")]
-    ls_col = request.args.getlist("m")
+    # wanted_stocks = request.args.getlist("m")
 
-    df_columns = ["date", "close", "Name"]
+    stocks_list = app.df["Name"].unique() #list of unique stocks in Name column
+    wanted_stocks = ["AAL", "AAPL", "AMZN"]
 
-    # Generate a list of all the months we need to get
-    all_years = [str(year) for year in range(min(ls_year), max(ls_year) + 1)]
+    ls_year = [2013, 2015]
+    all_years = [str(year) for year in range(min(ls_year), max(ls_year) + 1)] # get all years from the min and max range
+    # print(df.columns)
 
-    # Grab all of the wanted dates by filtering for the ones we want
+    # Grab all of the wanted months by filtering for the ones we want
     wanted_months = reduce(
         lambda a, b: a | b, (app.df["date"].str.contains(year) for year in all_years)
     )
 
-    #get wanted days
+    # Copy df and only get the wanted months
+    df_new = app.df[wanted_months]
 
-    print("LS COL:", ls_col)
-    # Create a new dataframe from the one that
-    # df_new = app.df[wanted_months][["date"] + ls_col]
-    df_new = app.df[wanted_months][["date"] + ["close"]]
+    # drop columns we dont need
+    df_new.drop(['open', 'high', 'low', 'volume'], axis=1, inplace=True)
+    
+    # Get unwanted stocks
+    unwanted_stocks = []
+    for stock in stocks_list:
+        if stock not in wanted_stocks:
+            unwanted_stocks.append(stock)
 
-    print("NEW DF with + ", df_new.to_json())
+    # get the rows of stocks we want
+    first_stock_name = wanted_stocks[0]
 
-    # Convert all string dates into datetime objects and then sort them
-    df_new["date"] = pd.to_datetime(df_new["date"])
-    df_new = df_new.sort_values(by=["date"])
+    # Make the first wanted stock the default value
+    filtered_df = format_df_for_chartist(df_new, first_stock_name)
 
-    df_new = df_new[df_columns] #select right columns
+    # Loop through the rest of the wanted stocks and append it filtered_df
+    for i in range(1, len(wanted_stocks)):
+        stock_name = wanted_stocks[i]
+        # get the df for the current stock
+        wanted_stock_df = format_df_for_chartist(df_new, stock_name)
+        # merge df to filtered_df by their date values
+        filtered_df = pd.merge(filtered_df, wanted_stock_df, on='date')
 
-    #now select the right rows
-    df_new = df_new[df_columns["Name"] == "AAPL"]
-    print("New DF:", df_new)
+    print("Filtered Df=\n", filtered_df)
+
     # Return the dataframe as json
-    return df_new.to_json(), 200
+    return filtered_df.to_json(), 200
 
 
 if __name__ == "__main__":
