@@ -10,7 +10,7 @@ df = read_stocks_csv()
 stocks_list = df["Name"].unique() #list of unique stocks in Name column
 wanted_stocks = ["AAL", "AAPL", "AMZN"]
 
-ls_year = [2013, 2015]
+ls_year = [2013, 2013]
 all_years = [str(year) for year in range(min(ls_year), max(ls_year) + 1)] # get all years from the min and max range
 # print(df.columns)
 
@@ -32,12 +32,18 @@ for stock in stocks_list:
 df_new.drop(['open', 'high', 'low', 'volume'], axis=1, inplace=True)
 
 # get the rows of stocks we want
-first_wanted_stock = wanted_stocks[0]
-filtered_df = df_new.loc[df_new['Name'] == first_wanted_stock]
+first_stock_name = wanted_stocks[0]
+filtered_df = df_new.loc[df_new['Name'] == first_stock_name]
+filtered_df = filtered_df.rename(columns={'close': first_stock_name})
+filtered_df.drop(['Name'], axis=1, inplace=True)
+
 for i in range(1, len(wanted_stocks)):
     wanted_stock_name = wanted_stocks[i]
     wanted_stock_df = df_new.loc[df_new['Name'] == wanted_stock_name]
-    filtered_df = pd.concat([filtered_df, wanted_stock_df])
+    wanted_stock_df = wanted_stock_df.rename(columns={'close': wanted_stock_name})
+    wanted_stock_df.drop(['Name'], axis=1, inplace=True)
+    # filtered_df = pd.concat([filtered_df, wanted_stock_df])
+    filtered_df = pd.merge(filtered_df, wanted_stock_df, on='date')
 
 print("DF NEW =\n", filtered_df)
 
