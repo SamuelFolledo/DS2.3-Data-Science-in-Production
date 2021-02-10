@@ -20,14 +20,17 @@ columnList.addEventListener("click", e => {
 });
 
 // Get the initial chart data
-function getChartData(queryString = "?n=2004&n=2005&m=diet&m=gym") {
+function getChartData(queryString = "?n=2013&n=2013&m=AAPL&m=AAL") {
   axios
     .get("/time_series" + queryString)
     .then(res => {
       let timeSeries = res.data;
 
+      console.log(timeSeries)
+
       const seriesData = [];
-      const series = ["diet", "gym", "finance"];
+      const series = ["AAL", "AAPL", "AMZN", "ABC", "CVS", "CTXS"];
+
       for (let i = 0, length = series.length; i < length; i += 1) {
         const currSeries = series[i];
 
@@ -39,7 +42,7 @@ function getChartData(queryString = "?n=2004&n=2005&m=diet&m=gym") {
       }
 
       const chartData = {
-        labels: Object.values(timeSeries.month).map(utc => {
+        labels: Object.values(timeSeries.date).map(utc => {
           const date = new Date(0);
           date.setUTCMilliseconds(Number(utc));
           return `${date.getFullYear()}-${date.getMonth()}`;

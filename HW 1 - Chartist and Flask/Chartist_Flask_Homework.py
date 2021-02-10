@@ -42,12 +42,17 @@ def get_time_series_data():
     """
     # Grab the requested years and columns from the query arguments
     ls_year = [int(year) for year in request.args.getlist("n")]
-    # wanted_stocks = request.args.getlist("m")
+    wanted_stocks = request.args.getlist("m")
+    new_wanted_stocks = []
+    for stock in wanted_stocks:
+        new_wanted_stocks.append(stock.upper())
+    wanted_stocks = new_wanted_stocks
 
+    print("Query results\n", wanted_stocks,"\n\n",ls_year)
     stocks_list = app.df["Name"].unique() #list of unique stocks in Name column
-    wanted_stocks = ["AAL", "AAPL", "AMZN"]
+    # wanted_stocks = ["AAL", "AAPL", "AMZN"]
 
-    ls_year = [2013, 2015]
+    # ls_year = [2013, 2015]
     all_years = [str(year) for year in range(min(ls_year), max(ls_year) + 1)] # get all years from the min and max range
     # print(df.columns)
 
@@ -61,15 +66,10 @@ def get_time_series_data():
 
     # drop columns we dont need
     df_new.drop(['open', 'high', 'low', 'volume'], axis=1, inplace=True)
-    
-    # Get unwanted stocks
-    unwanted_stocks = []
-    for stock in stocks_list:
-        if stock not in wanted_stocks:
-            unwanted_stocks.append(stock)
 
     # get the rows of stocks we want
     first_stock_name = wanted_stocks[0]
+    # print("DF-NEW", df_new)
 
     # Make the first wanted stock the default value
     filtered_df = format_df_for_chartist(df_new, first_stock_name)
@@ -79,6 +79,7 @@ def get_time_series_data():
         stock_name = wanted_stocks[i]
         # get the df for the current stock
         wanted_stock_df = format_df_for_chartist(df_new, stock_name)
+        # print("wanted stock df\n", wanted_stock_df)
         # merge df to filtered_df by their date values
         filtered_df = pd.merge(filtered_df, wanted_stock_df, on='date')
 
