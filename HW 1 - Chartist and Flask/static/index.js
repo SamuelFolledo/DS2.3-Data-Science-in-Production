@@ -20,7 +20,8 @@ columnList.addEventListener("click", e => {
 });
 
 // Get the initial chart data
-function getChartData(queryString = "?n=2013&n=2013&m=AAPL&m=AAL") {
+// function getChartData(queryString = "?n=2013&n=2013&m=AAPL&m=AAL") {
+function getChartData(queryString = "?n=2013&n=2013&m=AAL") {
   axios
     .get("/time_series" + queryString)
     .then(res => {
