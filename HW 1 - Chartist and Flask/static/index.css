@@ -24,10 +24,12 @@ body {
 
 .chart {
     width: 70%;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
 }
 .ct-chart {
-    height: 80%;
+    /* height: 80%; */
+    flex: 1 1 0.5;
+    overflow:hidden;
 }
 
 .control {
