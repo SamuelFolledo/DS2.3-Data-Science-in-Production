@@ -81,7 +81,8 @@ function updateChart() {
   // Grab all the checked columns
   for (let i = 0, length = items.length; i < length; i += 1) {
     if (items[i].classList.contains("checked")) {
-      queryString += "&m=" + items[i].innerText.toLowerCase();
+      // queryString += "&m=" + items[i].innerText.toLowerCase(); #changed this to not lower case
+      queryString += "&m=" + items[i].innerText;
     }
   }
 
