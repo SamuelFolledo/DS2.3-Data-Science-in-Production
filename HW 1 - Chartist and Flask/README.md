@@ -16,4 +16,4 @@
 - Turn in by sending me the link to your github repo where you implemented it
 
 ## Homework Demo - Stocks Charts
-<img src="https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/blob/master/assets/videos/chartist-hw1-demo.gif?raw=true" width="400">
+<img src="https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/blob/master/assets/videos/chartist-hw1-demo.gif?raw=true" width="800">
