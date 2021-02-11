@@ -14,7 +14,7 @@ Students by the end of the course will be able to:
 ## Demos
 
 ### [Homework Demo - Stocks Charts](https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/tree/master/HW%201%20-%20Chartist%20and%20Flask)
-<img src="https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/blob/master/assets/videos/chartist-hw1-demo.gif?raw=true" width="800">
+<img src="https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/blob/master/assets/videos/chartist-hw1-demo.gif?raw=true">
 
 ## Important Resources
 - [Full Stack Deep Learning GitHub Repo](https://github.com/full-stack-deep-learning)
