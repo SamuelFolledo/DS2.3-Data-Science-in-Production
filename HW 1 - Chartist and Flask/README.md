@@ -14,3 +14,6 @@
 - Build an interactive Chart app to display data from a .csv file of your choosing, by refactoring the code we just ran.
 - Due on Tuesday 02 Feb before class.
 - Turn in by sending me the link to your github repo where you implemented it
+
+## Homework Demo - Stocks Charts
+<img src="https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/blob/master/assets/videos/chartist-hw1-demo.gif?raw=true" width="400">
