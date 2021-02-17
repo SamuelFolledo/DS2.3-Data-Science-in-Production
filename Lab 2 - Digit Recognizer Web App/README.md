@@ -5,3 +5,15 @@ For more infos, see this <a href="https://medium.com/@rhome/deep-learning-web-ap
 
 ## Demo
 [<img src="https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/blob/master/assets/videos/digit_recognizer_demo.gif?raw=true">](https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/tree/master/Lab%202%20-%20Digit%20Recognizer%20Web%20App)
+
+
+## How to run
+1. Open terminal and change directory to the client directory
+
+`cd client`
+
+2. Build
+`npm build`
+
+3. Start the web app
+`npm start`
