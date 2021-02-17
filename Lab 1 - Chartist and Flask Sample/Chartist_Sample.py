@@ -9,7 +9,9 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 # Attach our dataframe to our app
-app.df = pd.read_csv("multiTimeline.csv", skiprows=1)
+DF_PATH = "/Users/samuelfolledo/Library/Mobile Documents/com~apple~CloudDocs/Desktop/MakeSchool/Term3-2/DS2.3 - Data Science in Production/Lab 1 - Chartist and Flask Sample/multiTimeline.csv"
+app.df = pd.read_csv(DF_PATH, skiprows=1)
+# app.df = pd.read_csv("multiTimeline.csv", skiprows=1)
 app.df.columns = ["month", "diet", "gym", "finance"]
 
 
@@ -46,10 +48,14 @@ def get_time_series_data():
     # Convert all string dates into datetime objects and then sort them
     df_new["month"] = pd.to_datetime(df_new["month"])
     df_new = df_new.sort_values(by=["month"])
-    print("NEW DF = ", df_new.to_json())
+    print("NEW DF = \n", df_new)
     # Return the dataframe as json
     return df_new.to_json(), 200
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=3000)
+    # Uncomment for running locally
+    # app.run(host="127.0.0.1", port=3000)
+
+    # Threaded option to enable multiple instances for multiple user access support
+    app.run(threaded=True, port=5000)

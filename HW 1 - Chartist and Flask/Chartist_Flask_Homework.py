@@ -30,7 +30,8 @@ def get_root():
         # generate random hex color each stock
         hex_color = "#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
         # append Stock
-        stocks.append(Stock(stock_name, hex_color))
+        stock = Stock(stock_name, hex_color)
+        stocks.append(stock)
     return render_template("index.html", stocks=stocks), 200
 
 
