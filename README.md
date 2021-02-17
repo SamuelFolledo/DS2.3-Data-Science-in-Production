@@ -13,8 +13,11 @@ Students by the end of the course will be able to:
 
 ## Demos
 
-### [Homework Demo - Stocks Charts](https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/tree/master/HW%201%20-%20Chartist%20and%20Flask)
+### [Stocks Charts Using Chartist](https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/tree/master/HW%201%20-%20Chartist%20and%20Flask)
 <img src="https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/blob/master/assets/videos/chartist-hw1-demo.gif?raw=true">
+
+### Digit Recognizer Web App
+[<img src="https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/blob/master/assets/videos/digit_recognizer_demo.gif?raw=true">](https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/tree/master/Lab%202%20-%20Digit%20Recognizer%20Web%20App)
 
 ## Important Resources
 - [Full Stack Deep Learning GitHub Repo](https://github.com/full-stack-deep-learning)
