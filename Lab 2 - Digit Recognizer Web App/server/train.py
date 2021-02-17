@@ -67,7 +67,7 @@ print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
 #%% save model
-save_path = "C:\TEMP\mnist_model.h5"
+save_path = "my_model.h5"
 model.save(save_path)
 print("Model saved on disk:", save_path)
 
@@ -88,3 +88,5 @@ def predictAndPlotImage():
 #%%
 print(">>> END")
 print("*******************************************************")
+
+# %%

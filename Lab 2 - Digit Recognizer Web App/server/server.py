@@ -36,7 +36,7 @@ preditionResponse = api.model('PreditionResponse', {
 
 # load trained model
 print("Loading model...")
-model = tf.keras.models.load_model("C:\TEMP\mnist_model.h5")
+model = tf.keras.models.load_model("my_model.h5")
 print("Model loaded. Starting server...")
 
 @ns.route('/health-check', methods=['GET'])
