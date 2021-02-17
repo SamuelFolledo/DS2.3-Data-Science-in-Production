@@ -11,10 +11,14 @@ Students by the end of the course will be able to:
 4. Implement Advanced Visualizations using a Chart.js/D3.js Frontend, and a Python Backend
 5. Work on Big Data using PySpark, H2O and Pandas
 
+## Demos
+
+### [Homework Demo - Stocks Charts](https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/tree/master/HW%201%20-%20Chartist%20and%20Flask)
+<img src="https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/blob/master/assets/videos/chartist-hw1-demo.gif?raw=true">
+
 ## Important Resources
 - [Full Stack Deep Learning GitHub Repo](https://github.com/full-stack-deep-learning)
 - [Full Stack Deep Learning Google Colab](https://colab.research.google.com/drive/1DMU3tPCUJkPZvsPX_86uBumKRiwwpo4m#scrollTo=3gQcemmDpwig)
-
 
 ## Contact
 - If you have any question, feel free to contact me via email: <samuelfolledo@gmail.com>
