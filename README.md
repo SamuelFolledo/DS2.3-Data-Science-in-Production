@@ -20,7 +20,7 @@ Students by the end of the course will be able to:
 [<img src="https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/blob/master/assets/videos/digit_recognizer_demo.gif?raw=true">](https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/tree/master/Lab%202%20-%20Digit%20Recognizer%20Web%20App)
 
 ### Docker CatNip Tutorial Demo
-[<img src="https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/blob/master/assets/videos/docker-tutorial-demo.gif?raw=true">](https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/tree/master/Lab%202%20-%20Digit%20Recognizer%20Web%20App)
+[<img src="https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/blob/master/assets/videos/docker-tutorial-demo.gif?raw=true">](https://github.com/SamuelFolledo/DS2.3-Data-Science-in-Production/tree/master/Lab%206%20-%20Docker%20for%20Beginners%20Tutorial)
 
 ## Important Resources
 - [Full Stack Deep Learning GitHub Repo](https://github.com/full-stack-deep-learning)
